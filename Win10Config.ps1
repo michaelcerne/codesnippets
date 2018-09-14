@@ -57,23 +57,5 @@ New-ItemProperty -Path "Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\C
 #New-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "ConnectedSearchUseWeb" -Value "0" -PropertyType DWORD -Force | Out-Null
 Write-Host "Disabled Cortana Web Search"
 
-
-$WSH = New-Object -Com wscript.shell
-
-$WSH.run("%windir%\system32\control.exe /name Microsoft.DefaultPrograms /page pageDefaultProgram\pageAdvancedSettings?pszAppName=google%20chrome") | out-null
-Sleep 2
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys(" ")
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys("{TAB}")
-$WSH.SendKeys(" ")
-Sleep 2
-Write-Host "Changed Browser"
-$WSH.SendKeys("%{F4}")
-
 Write-Host "Modifications Finished"
 Write-Host "Completed"
